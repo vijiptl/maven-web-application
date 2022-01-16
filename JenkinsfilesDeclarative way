@@ -23,7 +23,7 @@ stage('Building'){
         sh "mvn clean package"
     }
 }
-
+/*
 //Now Testing the code by SonarQube
 stage('SonarQube Tester'){
     steps{
@@ -45,6 +45,7 @@ stage('SonarQube Tester'){
 sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.0.95.39:/opt/tomcat9/webapps/"
 }
     }
+    */
     }
     }//closing stages
 }//closing pipeline
