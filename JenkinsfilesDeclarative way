@@ -1,0 +1,50 @@
+pipeline{
+agent any
+tools {
+  maven 'maven3.8.4'
+}
+
+triggers {
+  pollSCM '* * * * *'
+}
+
+stages{
+
+    //We are getting code from GitHub Repo
+stage('CheckoutCode Git'){
+    steps{
+    git credentialsId: '0a822100-ecfa-4bcd-a7e0-bc5a4808d23f', url: 'https://github.com/vijiptl/maven-web-application.git'
+    }
+}
+
+//Now to create a package from Maven
+stage('Building'){
+    steps{
+        sh "mvn clean package"
+    }
+}
+
+//Now Testing the code by SonarQube
+stage('SonarQube Tester'){
+    steps{
+        sh "mvn sonar:sonar"
+    }
+}
+    
+    //Now pushing Code to Artifactory Repo
+    stage('Nexus Repo'){
+        steps{
+            sh "mvn clean deploy"
+        }
+    }
+    
+    //Now to deploy for Tomcat server
+    stage('Tom-cat server'){
+        steps{
+            sshagent(['7270cea8-9195-4507-8750-2f92077e6963']) {
+sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.0.95.39:/opt/tomcat9/webapps/"
+}
+    }
+    }
+    }//closing stages
+}//closing pipeline
