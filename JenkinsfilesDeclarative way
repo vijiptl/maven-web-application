@@ -3,11 +3,11 @@ agent any
 tools {
   maven 'maven3.8.4'
 }
-
+/*
 triggers {
   pollSCM '* * * * *'
 }
-
+*/
 stages{
 
     //We are getting code from GitHub Repo
