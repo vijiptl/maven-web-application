@@ -21,8 +21,8 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://3.110.156.6:9000/</sonar.host.url>
-		<sonar.login>2467cd98960c7db9b4aa330e1aaf2af5df9d69d0</sonar.login>
+		<sonar.host.url>http://ec2-3-111-29-222.ap-south-1.compute.amazonaws.com:9000/</sonar.host.url>
+		<sonar.login>b34ba5fd746e5e2e6f67fadb506f2d05bdc9bf81</sonar.login>
 		<!-- <sonar.password>admin</sonar.password> -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -97,14 +97,14 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://3.6.92.157:9980/vijiptl/repository/java-web-Release/</url>
+	      <name>Maven Web Releases Nexus Repository</name>
+	      <url>http://ec2-3-109-181-90.ap-south-1.compute.amazonaws.com:8081/repository/Maven-Web-Application/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://3.6.92.157:9980/vijiptl/repository/java-web-Snapshot/</url>
+	      <name>Maven Web Snapshot Nexus Repository </name>
+	      <url>http://ec2-3-109-181-90.ap-south-1.compute.amazonaws.com:8081/repository/Maven-Web-Snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
