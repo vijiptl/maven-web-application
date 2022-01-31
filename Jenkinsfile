@@ -1,33 +1,28 @@
-node
-{
+node {
+    
     def mavenHome = tool name: "maven3.8.4"
     
-    stage('CheckoutCode')
-    {
-        git branch: 'development', credentialsId: '0a822100-ecfa-4bcd-a7e0-bc5a4808d23f', url:
-        'https://github.com/vijiptl/maven-web-application.git'
+    stage('Preparation') { 
+    git branch: 'development', credentialsId: '5657b417-b021-4b33-82b9-a5416d6e9f01', url:
+    'https://github.com/vijiptl/maven-web-application.git'
     }
     
-    stage('Buildpackage'){
+    stage('Build') {
         sh "${mavenHome}/bin/mvn clean package"
     }
     
-    stage('SonarRun'){
-sh "${mavenHome}/bin/mvn sonar:sonar"
-}
-
-stage('NexusArtifact'){
-    sh "${mavenHome}/bin/mvn clean deploy"
-}
-
-stage ('Tomcatdeploy'){
-    sshagent(['7270cea8-9195-4507-8750-2f92077e6963']) {
-sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.0.95.39:/opt/tomcat9/webapps/"
-}
-  }
-
-stage('EmailNotification'){
-emailext body: 'Build Report', subject: 'Build Report', to: 'vijayptlp@gmail.com'
+    stage('Sonar to Sonar'){
+        sh "${mavenHome}/bin/mvn sonar:sonar"
+    }
     
+    stage('Nexus underControl'){
+        sh "${mavenHome}/bin/mvn clean deploy"
+    }
+    
+    stage('Tom to Cat'){
+        sshagent(['fc25114a-735e-49ba-b2ad-c5b276eb381a']) {
+sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@ec2-13-232-28-175.ap-south-1.compute.amazonaws.com:/opt/Tomcat9/webapps"
 }
+    }
+
 }
