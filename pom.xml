@@ -21,8 +21,8 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://13.211.190.45:9000</sonar.host.url>
-                <sonar.login>dcf7a06d4bc61862a5116da2bd2d37ddd32c7e97</sonar.login>
+		<sonar.host.url>http://3.26.234.72:9000</sonar.host.url>
+                <sonar.login>3e8b9478256abfef1cbd6daa7a70e8a3bd67fa30</sonar.login>
 		<!--<sonar.password>admin</sonar.password>  -->
               
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -98,14 +98,14 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://54.252.173.144:9980/mithuntechnologies/repository/wallmart-release/</url>
+	      <name>Vijayananda patil Releases Nexus Repository</name>
+	      <url>http://3.26.234.72:8081/repository/Web-Mav-App_R/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://54.252.173.144:9980/mithuntechnologies/repository/wallmart-snapshot/</url>
+	      <name>Vijayananda patil Snapshot Nexus Repository </name>
+	      <url>http://3.26.234.72:8081/repository/Web-Maven-App/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
